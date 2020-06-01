@@ -21,6 +21,7 @@
 #include <nori/object.h>
 #include <nori/frame.h>
 #include <nori/bbox.h>
+#include "dpdf.h"
 
 NORI_NAMESPACE_BEGIN
 
@@ -151,6 +152,9 @@ public:
     /// Register a child object (e.g. a BSDF) with the mesh
     virtual void addChild(NoriObject *child);
 
+    const Point3f getVertex(uint32_t index, int nthVertex) const;
+
+
     /// Return the name of this mesh
     const std::string &getName() const { return m_name; }
 
@@ -162,6 +166,7 @@ public:
      * provided by this instance
      * */
     EClassType getClassType() const { return EMesh; }
+    void sampler(float s1, float s2, Point3f &p, Vector3f &n, float &pdf);
 
 protected:
     /// Create an empty mesh
@@ -176,6 +181,12 @@ protected:
     BSDF         *m_bsdf = nullptr;      ///< BSDF of the surface
     Emitter    *m_emitter = nullptr;     ///< Associated emitter, if any
     BoundingBox3f m_bbox;                ///< Bounding box of the mesh
+    DiscretePDF dpdf;
+
+
+    const Point3f getNormal(uint32_t index, int nthVertex) const;
+
+    void createDPDF();
 };
 
 NORI_NAMESPACE_END

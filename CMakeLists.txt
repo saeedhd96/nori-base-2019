@@ -88,7 +88,8 @@ add_executable(nori
   src/microfacet.cpp
   src/mirror.cpp
   src/dielectric.cpp
-)
+  src/normals.cpp
+        src/Node.cpp src/Node.h src/Octree.cpp src/Octree.h src/simple.cpp src/area.cpp src/whitted.cpp src/path_mats.cpp src/path_ems.cpp src/path_mis.cpp src/vol_path.cpp src/vol_path.h src/HomoMedia.cpp include/nori/medium.h)
 
 add_definitions(${NANOGUI_EXTRA_DEFS})
 

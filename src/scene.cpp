@@ -22,6 +22,10 @@
 #include <nori/sampler.h>
 #include <nori/camera.h>
 #include <nori/emitter.h>
+#include <vector>
+
+#include "nori/medium.h"
+
 
 NORI_NAMESPACE_BEGIN
 
@@ -34,6 +38,7 @@ Scene::~Scene() {
     delete m_sampler;
     delete m_camera;
     delete m_integrator;
+    delete s_medium;
 }
 
 void Scene::activate() {
@@ -70,6 +75,10 @@ void Scene::addChild(NoriObject *obj) {
                 throw NoriException("Scene::addChild(): You need to implement this for emitters");
             }
             break;
+        case EMedium: {
+            s_medium = (Medium*)obj;
+            break;
+        }
 
         case ESampler:
             if (m_sampler)
@@ -95,7 +104,26 @@ void Scene::addChild(NoriObject *obj) {
     }
 }
 
-std::string Scene::toString() const {
+Mesh* Scene::getSampleEmitter(float &count) const {
+        std::vector<Mesh*> meshes = this->getMeshes();
+        std::vector<Mesh*> emitters(0);
+        for (int i = 0; i < meshes.size() ; ++i) {
+            if (meshes[i]->isEmitter())
+                emitters.push_back(meshes[i]);
+        }
+
+        count = emitters.size();
+        if (emitters.size()==0)
+            return nullptr;
+        else if (emitters.size()==1)
+            return emitters.back();
+        else
+            return emitters[rand()% emitters.size()];
+    }
+
+
+
+    std::string Scene::toString() const {
     std::string meshes;
     for (size_t i=0; i<m_meshes.size(); ++i) {
         meshes += std::string("  ") + indent(m_meshes[i]->toString(), 2);
@@ -119,5 +147,9 @@ std::string Scene::toString() const {
     );
 }
 
-NORI_REGISTER_CLASS(Scene, "scene");
+    Medium *Scene::getSMedium() const {
+        return s_medium;
+    }
+
+    NORI_REGISTER_CLASS(Scene, "scene");
 NORI_NAMESPACE_END

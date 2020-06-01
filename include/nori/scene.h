@@ -19,6 +19,8 @@
 #pragma once
 
 #include <nori/accel.h>
+#include "medium.h"
+
 
 NORI_NAMESPACE_BEGIN
 
@@ -45,6 +47,8 @@ public:
 
     /// Return a pointer to the scene's integrator
     Integrator *getIntegrator() { return m_integrator; }
+
+    Medium *getSMedium() const;
 
     /// Return a pointer to the scene's camera
     const Camera *getCamera() const { return m_camera; }
@@ -116,12 +120,17 @@ public:
     std::string toString() const;
 
     EClassType getClassType() const { return EScene; }
+
+    Mesh *getSampleEmitter(float &count) const;
+
+
 private:
     std::vector<Mesh *> m_meshes;
     Integrator *m_integrator = nullptr;
     Sampler *m_sampler = nullptr;
     Camera *m_camera = nullptr;
     Accel *m_accel = nullptr;
+    Medium *s_medium= nullptr;
 };
 
 NORI_NAMESPACE_END

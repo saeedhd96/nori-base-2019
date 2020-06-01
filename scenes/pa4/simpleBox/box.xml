@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<scene>
+    <integrator type="simple">
+        <point name="position" value="4.076245,1.005454,5.903862"/>
+        <color name="energy" value="3.76e4, 3.76e4, 3.76e4"/>
+    </integrator>
+	<sampler type="independent">
+		<integer name="sampleCount" value="32"/>
+	</sampler>
+	<camera type="perspective">
+		<float name="fov" value="49.13434207760448"/>
+		<float name="nearClip" value="0.10000000149011612"/>
+		<float name="farClip" value="100.0"/>
+		<integer name="width" value="960"/>
+		<integer name="height" value="540"/>
+		<transform name="toWorld">
+			<scale value="1.000000 1.000000 -1.000000"/>
+			<matrix value="0.6858805418014526,-0.31737011671066284,0.6548618674278259,7.481131553649902,0.7276337742805481,0.31246861815452576,-0.6106656193733215,-6.5076398849487305,-0.010816780850291252,0.8953432440757751,0.4452453553676605,5.34366512298584,0.0,0.0,0.0,1.0"/>
+		</transform>
+	</camera>
+<!-- 	<emitter type="point">
+		<point name="position" value="4.076245,1.005454,5.903862"/>
+	</emitter>
+ -->	<mesh type="obj">
+		<string name="filename" value="meshes/Cube_Material.obj"/>
+		<transform name="toWorld">
+			<matrix value="1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0"/>
+		</transform>
+		<bsdf type="diffuse">
+			<color name="albedo" value="0.800000,0.800000,0.800000"/>
+		</bsdf>
+	</mesh>
+
+
+
+</scene>

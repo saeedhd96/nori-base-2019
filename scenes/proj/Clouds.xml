@@ -1,0 +1,93 @@
+<?xml version="1.0" ?>
+<scene>
+    <integrator type="simple">
+        <point name="position" value="10, 10, 10"/>
+        <color name="energy" value="3.76e4, 3.76e4, 3.76e4"/>
+    </integrator>
+	<sampler type="independent">
+		<integer name="sampleCount" value="32"/>
+	</sampler>
+	<camera type="perspective">
+		<float name="fov" value="49.13434207760448"/>
+		<float name="nearClip" value="0.10000000149011612"/>
+		<float name="farClip" value="100.0"/>
+		<integer name="width" value="960"/>
+		<integer name="height" value="540"/>
+		<transform name="toWorld">
+			<scale value="1.000000 1.000000 -1.000000"/>
+			<matrix value="1.0,0.0,0.0,-0.0230201818048954,0.0,0.064200758934021,-0.997937023639679,-5.822883605957031,0.0,0.997937023639679,0.064200758934021,0.6658163666725159,0.0,0.0,0.0,1.0"/>
+		</transform>
+	</camera>
+	<mesh type="obj">
+		<string name="filename" value="meshes/Cube.006_Material.003.obj"/>
+		<transform name="toWorld">
+			<matrix value="1.0,0.0,0.0,4.151225566864014,0.0,1.0,0.0,11.224730491638184,0.0,0.0,1.0,0.4630957245826721,0.0,0.0,0.0,1.0"/>
+		</transform>
+		<bsdf type="diffuse">
+			<color name="albedo" value="0.800000,0.800000,0.800000"/>
+		</bsdf>
+	</mesh>
+	<mesh type="obj">
+		<string name="filename" value="meshes/Cube.005_Material.003.obj"/>
+		<transform name="toWorld">
+			<matrix value="1.0,0.0,0.0,-3.097364902496338,0.0,1.0,0.0,8.913358688354492,0.0,0.0,1.0,1.4645648002624512,0.0,0.0,0.0,1.0"/>
+		</transform>
+		<bsdf type="diffuse">
+			<color name="albedo" value="0.800000,0.800000,0.800000"/>
+		</bsdf>
+	</mesh>
+	<mesh type="obj">
+		<string name="filename" value="meshes/Cube.004_Material.003.obj"/>
+		<transform name="toWorld">
+			<matrix value="0.7169590592384338,0.0,0.0,-1.197169542312622,0.0,0.5056115984916687,0.0,4.8140974044799805,0.0,0.0,0.41588109731674194,0.2751480042934418,0.0,0.0,0.0,1.0"/>
+		</transform>
+		<bsdf type="diffuse">
+			<color name="albedo" value="0.800000,0.800000,0.800000"/>
+		</bsdf>
+	</mesh>
+	<mesh type="obj">
+		<string name="filename" value="meshes/Cube.003_Material.obj"/>
+		<transform name="toWorld">
+			<matrix value="7.549790126404332e-08,1.3494930267333984,0.0,-0.07401369512081146,-1.0,1.0188389154563993e-07,0.0,5.784722328186035,0.0,0.0,1.0,2.592494487762451,0.0,0.0,0.0,1.0"/>
+		</transform>
+		<bsdf type="diffuse">
+			<color name="albedo" value="0.800000,0.800000,0.800000"/>
+		</bsdf>
+	</mesh>
+	<mesh type="obj">
+		<string name="filename" value="meshes/Cube.002_Material.003.obj"/>
+		<transform name="toWorld">
+			<matrix value="0.9116857051849365,-0.021818606182932854,0.0,2.347872257232666,0.04478297382593155,0.4441802203655243,0.0,5.787223815917969,0.0,0.0,0.42276930809020996,-0.07952393591403961,0.0,0.0,0.0,1.0"/>
+		</transform>
+		<bsdf type="diffuse">
+			<color name="albedo" value="0.800000,0.800000,0.800000"/>
+		</bsdf>
+	</mesh>
+	<mesh type="obj">
+		<string name="filename" value="meshes/Cube.001_Material.003.obj"/>
+		<transform name="toWorld">
+			<matrix value="0.9857645034790039,0.16813203692436218,0.0,3.8367919921875,-0.16813203692436218,0.9857645034790039,0.0,4.320651531219482,0.0,0.0,1.0,-0.29816609621047974,0.0,0.0,0.0,1.0"/>
+		</transform>
+		<bsdf type="diffuse">
+			<color name="albedo" value="0.800000,0.800000,0.800000"/>
+		</bsdf>
+	</mesh>
+	<mesh type="obj">
+		<string name="filename" value="meshes/Plane_Clouds big.obj"/>
+		<transform name="toWorld">
+			<matrix value="4.722534656524658,0.0,0.0,0.0,0.0,4.722534656524658,0.0,0.5996233820915222,0.0,0.0,4.722534656524658,-0.1954239010810852,0.0,0.0,0.0,1.0"/>
+		</transform>
+		<bsdf type="diffuse">
+			<color name="albedo" value="0.800000,0.800000,0.800000"/>
+		</bsdf>
+	</mesh>
+	<mesh type="obj">
+		<string name="filename" value="meshes/Cube_Material.003.obj"/>
+		<transform name="toWorld">
+			<matrix value="1.0,0.0,0.0,-3.410919189453125,0.0,1.0,0.0,4.839058876037598,0.0,0.0,0.8858096599578857,0.6631377339363098,0.0,0.0,0.0,1.0"/>
+		</transform>
+		<bsdf type="diffuse">
+			<color name="albedo" value="0.800000,0.800000,0.800000"/>
+		</bsdf>
+	</mesh>
+</scene>

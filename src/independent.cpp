@@ -58,7 +58,7 @@ public:
     float next1D() {
         return m_random.nextFloat();
     }
-    
+
     Point2f next2D() {
         return Point2f(
             m_random.nextFloat(),
@@ -69,6 +69,8 @@ public:
     std::string toString() const {
         return tfm::format("Independent[sampleCount=%i]", m_sampleCount);
     }
+
+
 protected:
     Independent() { }
 

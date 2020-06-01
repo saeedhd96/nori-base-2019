@@ -26,12 +26,24 @@ NORI_NAMESPACE_BEGIN
  * \brief Superclass of all emitters
  */
 class Emitter : public NoriObject {
-public:
 
+public:
+//    virtual Color3f sample(const Mesh &mesh, const Point2f &sample) const;
+//
+    virtual Color3f eval(Point3f &p, Vector3f &normals, Vector3f sampledToIntersection) const=0;
+//
+//
+//    virtual float pdf(const Mesh &mesh) const;
+
+
+
+        virtual const Color3f &getRadiance() const =0;
     /**
      * \brief Return the type of object (i.e. Mesh/Emitter/etc.) 
      * provided by this instance
      * */
+
+
     EClassType getClassType() const { return EEmitter; }
 };
 

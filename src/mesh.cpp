@@ -38,6 +38,7 @@ void Mesh::activate() {
         m_bsdf = static_cast<BSDF *>(
             NoriObjectFactory::createInstance("diffuse", PropertyList()));
     }
+    createDPDF();
 }
 
 float Mesh::surfaceArea(uint32_t index) const {
@@ -163,5 +164,53 @@ std::string Intersection::toString() const {
         mesh ? mesh->toString() : std::string("null")
     );
 }
+
+    void Mesh::createDPDF() {
+        dpdf = DiscretePDF(0);
+        for (int i = 0; i < getTriangleCount(); ++i) {
+            dpdf.append(surfaceArea(i));
+        }
+        dpdf.normalize();
+
+
+    }
+
+
+    void Mesh::sampler(float s1, float s2, Point3f &p,Vector3f &n, float &pdf) {
+        float alpha = 1- sqrt(1-s1);
+        float beta = s2*sqrt(1-s1);
+        size_t index = dpdf.sampleReuse(s1,pdf);
+
+        Point3f bary(alpha,beta, 1-alpha-beta);
+        Point3f p0(getVertex(index,0));
+        Point3f p1(getVertex(index,1));
+        Point3f p2(getVertex(index,2));
+
+
+
+        p = bary.x() * p0 + bary.y() * p1 + bary.z() * p2;
+
+
+        if (m_N.size()==0)
+            n = (p1-p0).cross(p2-p0).normalized();
+        else
+            n = (bary.x() * getNormal(index,0) +
+               bary.y() * getNormal(index,1) +
+               bary.z() * getNormal(index, 2)).normalized();
+
+    }
+
+
+
+
+    const Point3f Mesh::getVertex(uint32_t index, int nthVertex) const {
+        return Point3f(m_V.col(m_F(nthVertex, index)));
+    }
+
+    const Point3f Mesh::getNormal(uint32_t index, int nthVertex) const {
+            return Point3f(m_N.col(m_F(nthVertex, index)));
+    }
+
+
 
 NORI_NAMESPACE_END
